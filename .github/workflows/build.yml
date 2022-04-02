@@ -10,7 +10,7 @@ jobs:
     - name: Compile
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: "**/*.tex"
+        root_file: "tex/**/*.tex"
         glob_root_file: true
         extra_fonts: res/IRBadr.ttf
         latexmk_use_xelatex: true
@@ -18,7 +18,7 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: "**/*.pdf"
+        file: "tex/**/*.pdf"
         file_glob: true
         tag: b
         overwrite: true
