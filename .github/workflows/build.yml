@@ -14,6 +14,7 @@ jobs:
         glob_root_file: true
         extra_fonts: res/IRBadr.ttf
         latexmk_use_xelatex: true
+        TEXINPUTS: ".:$PWD/../../:"
     - name: Upload PDF
       uses: svenstaro/upload-release-action@v2
       with:
