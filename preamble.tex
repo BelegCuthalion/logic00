@@ -2,9 +2,16 @@
 \usepackage{amsmath, amsfonts}
 \usepackage{mathtools,array,booktabs,mathabx}
 \usepackage{natbib}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage{forest}
-
+\usepackage{diagbox}
+\usepackage{bussproofs}
+\usepackage[tableaux]{prooftrees}
+\EnableBpAbbreviations
+%\usepackage[left=.5in,right=.5in,top=0.5in,bottom=.5in]{geometry}
+\usepackage{qtree}
+\usepackage{pdflscape}
+\usepackage{multicol}
 \usepackage{xepersian}
 
 \settextfont[Scale=1.3]{IRBadr}
@@ -17,3 +24,5 @@
 
 \renewcommand\beginmarkversion{\\\textbf{پاسخ: }}
 \renewcommand\endmarkversion{$\qed$}
+
+\forestset{line numbering = false, just sep = 0em, check with = {:}}

@@ -1,0 +1,202 @@
+\documentclass[12pt, 14paper]{article}
+
+\input{../../preamble}
+
+\pagenumbering{gobble}
+
+\markversion{ans}
+
+\begin{document}
+\begin{center}
+  {\Huge آزمون پایانی درس مبانی منطق}\\
+  \vspace{5mm}
+  ۱۲ تیر ۱۴۰۱ \quad \quad
+  فرصت پاسخگویی: سه ساعت
+\end{center}
+
+\vspace{5mm}
+\begin{enumerate}
+
+\item در زبان گزاره‌ای شامل $\wedge$ و $\neg$ عملگر پنج‌تایی $f$ را طوری تعریف کنید که $f(v,w,x,y,z)$ 
+درست باشد، اگرر جمله‌ی
+$$\text{IF}~ v ~\text{THEN}~ (\text{IF}~ w ~\text{THEN}~ x ~\text{ELSE}~ y) ~\text{ELSE}~ z$$
+درست باشد. صحت این تعریف را به کمک منطق گزاره‌ها بررسی کنید.
+\begin{ans}
+  $$ f(v, w, x, y, z) = (v \wedge w \wedge x) \vee (v \wedge \neg w \wedge y) \vee (\neg v \wedge z) $$
+
+  می‌دانیم ارزش گزاره‌ی بالا در صورت غلط بودن $v$ برابر است با $z$، در صورت درست بودن $v$ و درست بودن $w$ برابر است با $x$ و در صورت درست بودن $v$ و غلط بودن $w$ برابر است با $y$. این همان رفتاری است که از عبارت خواسته شده در سوال انتظار می‌رود.
+
+  با استفاده از قاعده‌ی دمورگان، این گزاره را در زبان $\wedge$ و $\neg$ به صورت زیر می‌نویسیم.
+
+  $$ f(v, w, x, y, z) = \neg ( \neg (v \wedge w \wedge x) \wedge \neg (v \wedge \neg w \wedge y) \wedge \neg (\neg v \wedge z) )$$
+\end{ans}
+
+
+\item چرا در جایگزینی باید به آزاد یا پابند بودن متغیرها توجه کرد؟
+\begin{ans}
+  
+\end{ans}
+
+\item صادق یا کاذب بودن هر یک از جملات $\varphi_1$ و $\varphi_2$ را در سه ساخت $\mathcal{A}$، $\mathcal{B}$ و $\mathcal{C}$ با ذکر دلیل مشخص کنید.
+\begin{flushleft}
+  $\mathbb{N} = \{ 0, 1, 2, \dots\}$ \quad $\mathcal{A} = \langle \mathbb{N}, <, +\rangle$
+
+  $\mathbb{Q} $ مجموعه‌ی اعداد گویا است. \quad $\mathcal{B} = \langle \mathbb{Q}, <, +\rangle$
+  
+  ''$.$`` عملگر ضرب است. \quad $\mathcal{C} = \langle \mathbb{N}, \ge, .\rangle$
+
+  
+  $\varphi_1 = \forall x \forall y (P(x,y) \rightarrow \exists z (P(x,z) \wedge P(z,y)))$\\
+  $\varphi_2 = \exists x \forall y (f(x,y) = x)$
+\end{flushleft}\quad
+\begin{ans}
+  \begin{enumerate}
+    \item[$\mathcal{A} \not \vDash \varphi_1$،]
+    زیرا به ازای $x=0$ و $y=1$، $z$ را هر عدد طبیعی بگیریم یا با یکی از $0$ یا $1$ برابر است، یا از هر دو اکیداً کوچک‌تر است، و یا از هر دو اکیداً بزرگ‌تر است. پس هیچ $z$ طبیعی وجود ندارد که داشته باشیم $0<z$ و $z < 1$. پس $\varphi_1$ لااقل به ازای یک تحصیص به $x$ و $y$ غلط است.
+    \item[$\mathcal{A} \not \vDash \varphi_2$،] زیرا اگر $x$ را هر عدد طبیعی دل‌خواهی فرض کنیم، می‌توانیم به $y$ یک عدد طبیعی به جز صفر نسبت دهیم تا جمع آن با $x$ مخالف $x$ باشد. پس هیچ عدد طبیعی مانند $x$ وجود ندارد که جمع آن با هر عدد طبیعی دیگری $x$ شود و در نتیجه، $\varphi_2$ غلط است.
+    \item[$\mathcal{B} \vDash \varphi_1$،] زیرا برای هر $x$ و $y$ گویا، می‌دانیم عدد گویایی مثل $x+y\over 2$ وجود دارد که اکیداً بین $x$ و $y$ است.
+    \item[$\mathcal{B} \not \vDash \varphi_2$،] مانند مورد دوم، چون هر تخصیصی به $x$ بدهیم، کافی است یک عدد گویای ناصفر به $y$ تخصیص دهیم تا جمع تغبیرهای $x$ و $y$ مخالف $x$ باشد. پس $\varphi_2$ غلط است.
+    \item[$\mathcal{C} \vDash \varphi_1$،] زیرا کاقی است برای $x$ و $y$ طبیعی که $x \ge y$ باشد، $z$ طبیعی معرفی کنیم که $x \ge z$ و $z \ge y$. خود $x$ می‌تواند چنین $z$ی باشد.
+    \item[$\mathcal{C} \vDash \varphi_2$،] زیرا کافی است $x$ طبیعی معرفی کنیم که برای هر $y$ طبیعی، $x . y = x$. $0$ چنین $x$ی است.
+  \end{enumerate}
+\end{ans}
+
+\item یک برهان در دستگاه استنتاج طبیعی برای فرمول زیر ارائه دهید.
+$$ \forall x \forall y \exists z (P(x,y) \rightarrow Q(y,z)) \rightarrow \forall x (\exists y Q(x,y) \vee \forall y (\neg P(y,x))) $$
+\begin{ans}\LTR
+\begin{landscape}
+  \begin{prooftree}
+    \AXC{$[\forall x \forall y \exists z (P(a,y) \rightarrow Q(y,z))]^4$}
+    \RightLabel{$\forall E$}
+    \UIC{$\forall y \exists z (P(a,y) \rightarrow Q(y,z))$}
+    \RightLabel{$\forall E$}
+    \UIC{$\exists z (P(a,b) \rightarrow Q(b,z))$}
+
+    \AXC{$[P(a,b)]^2$}
+
+    \AXC{$[P(a,b) \rightarrow Q(b,c)]^1$}
+
+    \RightLabel{$\rightarrow E$}
+    \BIC{$Q(b,c)$}
+    \RightLabel{$\exists I$}
+    \UIC{$\exists y Q(b,y)$}
+
+    \LeftLabel{$1$}\RightLabel{$\exists E$}
+    \BIC{$\exists y Q(b,y)$}
+    \RightLabel{$\vee I$}
+    \UIC{$A(b)$}
+
+    \AXC{$[\neg (A(b))]^3$}
+
+    \RightLabel{$\neg E$}
+    \BIC{$\bot$}
+    \LeftLabel{$2$}\RightLabel{$\neg I$}
+    \UIC{$\neg P(a,b)$}
+    \RightLabel{$\forall I$}
+    \UIC{$\forall y (\neg P(y,b))$}
+    \RightLabel{$\vee I$}
+    \UIC{$A(b)$}
+
+    \AXC{$[\neg (A(b))]^3$}
+    
+    \RightLabel{$\neg E$}
+    \BIC{$\bot$}
+    \LeftLabel{$3$}\RightLabel{$RAA$}
+    \UIC{$A(b)$}
+    \RightLabel{$\forall I$}
+    \UIC{$\forall x \exists y Q(x,y) \vee \forall y (\neg P(y,x))$}
+    \LeftLabel{$4$}\RightLabel{$\rightarrow I$}
+    \UIC{$\forall x \forall y \exists z (P(x,y) \rightarrow Q(y,z)) \rightarrow \forall x (\exists y Q(x,y) \vee \forall y (\neg P(y,x)))$}
+  \end{prooftree}
+
+
+  $$ A(b) = \exists y Q(b,y) \vee \forall y (\neg P(y,b)) $$
+\end{landscape}
+\end{ans}
+
+\item در روستایی به نام «سورَک» حداقل یک آرایشگر و یک نفر که آرایشگر مویش را کوتاه می‌کرد زندگی می‌کردند. یک قانون کوچک در این روستا حکم‌فرما بود: یک آرایشگر فقط و فقط موی تمام سورکی‌هایی را کوتاه می‌کرد که خودشان موی‌شان را کوتاه نمی‌کردند.
+
+\begin{enumerate}
+  \item این جملات را در زبان مرتبه اول با یک نماد محمولی یک موضعی و یک نماد محمولی دو موضعی صورت‌بندی کنید.
+  \item به روش تابلو نشان دهید جملات بند قبل ارضاشدنی نیست.
+\end{enumerate}\quad
+\begin{ans}
+  فرض کنیم $B(x)$ به معنای ''$x$ آرایشگر است`` و $S(x, y)$ به معنای ''$x$ موی $y$ را کوتاه می‌کند`` باشد.
+\begin{enumerate}
+  \item \begin{enumerate}
+    \item[] $\exists x (B(x) \wedge \exists y S(x, y))$
+    \item[] $\forall x (B(x) \rightarrow \forall y (S(x, y) \leftrightarrow \neg S(y, y)))$
+  \end{enumerate}
+  \item \quad
+  \begin{tableau}
+    {
+    to prove={}
+    }
+    [
+      {\exists x (B(x) \wedge \exists y S(x, y))}, checked=T [
+        {\forall x (B(x) \rightarrow \forall y (S(x, y) \leftrightarrow \neg S(y, y)))}, checked=T [
+          B(b), checked=T [
+            {\exists y S(b, y)}, checked=T [
+              B(b), checked=F [
+                {S(b, b) \leftrightarrow \neg S(b, b)}, checked=T, close
+              ]
+            ][
+              B(b), checked=T [
+                {S(b, b) \leftrightarrow \neg S(b, b)}, checked=T [
+                  {S(b, b)}, checked=T [
+                    {\neg S(b, b)}, checked=T [
+                      {S(b, b)}, checked=F, close
+                    ]
+                  ]
+                ][
+                  {S(b, b)}, checked=F [
+                    {\neg S(b, b)}, checked=F [
+                      {S(b, b)}, checked=T, close
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+        ]
+    ]
+    \end{tableau}
+\end{enumerate}             
+\end{ans}
+\item فرض کنید زبان مرتبه اول $\mathcal{L}^=$ فقط شامل یک نماد تابعی یک موضعی $f$ است. $\Gamma$ و $A$ در این زبان عبارتند از:
+\begin{enumerate}
+  \item[$\Gamma$:] \begin{enumerate*}[itemjoin={\quad}]
+    \item[$.i$] $f$ دارای نقطه‌ی ثابت نیست.
+    \item[$.ii$] ترکیب $f$ با خودش همانی است.
+  \end{enumerate*}
+  \item[$A$:] اگر حداقل ۳ شیء وجود داشته باشد، آنگاه حداقل ۴ شیء وجود دارد.
+\end{enumerate}
+ابتدا $\Gamma$ و $A$ را در این زبان صورت‌بندی کنید، سپس بررسی کنید که آیا ~ $\Gamma \vdash A$؟
+\begin{ans}
+    $$\Gamma = \{ \forall x (f(x) \neq x), \forall x (f(f(x)) = x) \}$$
+
+    $$A = \exists x_1 x_2 x_3 (\bigwedge_{\substack{i,j \leq 3 \\ i \neq j}} x_i \neq x_j) \rightarrow \exists x_1 x_2 x_3 x_4 (\bigwedge_{\substack{i,j \leq 4 \\ i \neq j}} x_i \neq x_j)$$
+
+    بله، $\Gamma \vdash A$. برای اثبات، از قضیه‌ی درستی کمک می‌گیریم و نشان می‌دهیم $\Gamma \vDash A$. چون $A$ در هر مدل غیر سه عضوی درست است، کافی است نشان دهیم $\Gamma$ مدل سه عضوی ندارد. با برهان خلف، فرض کنیم $\Gamma$ مدلی مانند $\mathfrak{M}$ با عالم سخن $\{ a_1, a_2, a_3 \}$ داشته باشد و $f$ را طوری تعبیر کنید که $f^\mathfrak{M}(a_1) = a_2$. چون $\mathfrak{M} \vDash \Gamma$ پس $f^\mathfrak{M}(f^\mathfrak{M}(a_1)) = a_1$، در نتیجه $f^\mathfrak{M}(a_2) = a_1$. از طرفی $f^\mathfrak{M}(a_3) \neq a_3$. پس $f^\mathfrak{M}(a_3) \in \{ a_1, a_2 \}$ و در نتیجه $f^\mathfrak{M}(f^\mathfrak{M}(a_3)) \in \{ f^\mathfrak{M}(a_1), f^\mathfrak{M}(a_2) \} = \{ a_1, a_2 \}$. اما می‌دانیم $f^\mathfrak{M}(f^\mathfrak{M}(a_3)) = a_3$، که تناقض است.
+\end{ans}
+
+\item فرض کنید $\Sigma$ یک نظریه‌ی سازگار هنکین در زبان مرتبه اول $\mathcal{L}^=$ است. آیا $\mathcal{L}^=$ لزوماً دارای نماد ثابت است؟
+\begin{ans}
+  بله.
+  
+  می‌دانیم $\vdash \exists x (x = x)$ و در نتیجه $\Sigma \vdash \exists x (x = x)$. چون $\Sigma$ هنکین است، پس باید یک $\mathcal{L}^=$-ترم بسته مانند $t$ وجود داشته باشد که $\Sigma \vdash t = t$. همچنین می‌دانیم که یک ترم بسته حتماً نماد ثابت دارد.
+\end{ans}
+
+\item نشان دهید جمله‌ای وجود ندارد که فقط در تمام مدل‌های نامتناهی صادق باشد.
+\begin{ans}
+  فرض کنید چنین جمله‌ای وجود دارد. یعنی
+  $$ \forall \mathfrak{M} (\mathfrak{M} \vDash \sigma \iff \mathfrak{M} \in \mathbf{Fin}) $$
+  که $\mathbf{Fin}$ مجموعه‌ی تمام ساختارهایی در زبان $\sigma$ است که  عالم سخن متناهی دارند. پس اگر $\lambda_n$ها و $\Gamma$ را به صورت زیر تعریف کنیم
+  $$ \lambda_n = \exists x_1, \dots, x_n (\bigwedge_{\substack{i,j \leq n \\ i \neq j}} x_i \neq x_j) $$
+  $$ \Gamma = \{ \lambda_n \mid n \in \mathbb{N} \} $$
+  آنگاه بر اساس قضیه‌ی فشردگی $\Gamma \cup \{ \sigma \}$ باید مدل داشته باشد، زیرا هر زیر مجموعه‌ی متناهی از آن که شامل $\sigma$ و یک $\lambda_i$ با $i$ بیشینه باشد، یک مدل متناهی $i$ عضوی دارد. اما واضح است که $\Gamma$ نمی‌تواند مدل متناهی داشته باشد، زیرا اگر چنین مدلی $i$ عضو داشته باشد، $\lambda_{i+1}$ در آن صادق نیست.
+\end{ans}
+
+\end{enumerate}
+\end{document}
