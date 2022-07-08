@@ -190,12 +190,19 @@ $$ \forall x \forall y \exists z (P(x,y) \rightarrow Q(y,z)) \rightarrow \forall
 
 \item نشان دهید جمله‌ای وجود ندارد که فقط در تمام مدل‌های نامتناهی صادق باشد.
 \begin{ans}
-  فرض کنید چنین جمله‌ای وجود دارد. یعنی
-  $$ \forall \mathfrak{M} (\mathfrak{M} \vDash \sigma \iff \mathfrak{M} \in \mathbf{Fin}) $$
-  که $\mathbf{Fin}$ مجموعه‌ی تمام ساختارهایی در زبان $\sigma$ است که  عالم سخن متناهی دارند. پس اگر $\lambda_n$ها و $\Gamma$ را به صورت زیر تعریف کنیم
-  $$ \lambda_n = \exists x_1, \dots, x_n (\bigwedge_{\substack{i,j \leq n \\ i \neq j}} x_i \neq x_j) $$
-  $$ \Gamma = \{ \lambda_n \mid n \in \mathbb{N} \} $$
-  آنگاه بر اساس قضیه‌ی فشردگی $\Gamma \cup \{ \sigma \}$ باید مدل داشته باشد، زیرا هر زیر مجموعه‌ی متناهی از آن که شامل $\sigma$ و یک $\lambda_i$ با $i$ بیشینه باشد، یک مدل متناهی $i$ عضوی دارد. اما واضح است که $\Gamma$ نمی‌تواند مدل متناهی داشته باشد، زیرا اگر چنین مدلی $i$ عضو داشته باشد، $\lambda_{i+1}$ در آن صادق نیست.
+  فرض کنید چنین جمله‌ای وجود دارد. یعنی جمله‌ای مانند $\sigma$ موجود است که
+  $$ \forall \mathfrak{M} (\mathfrak{M} \vDash \sigma \iff \mathfrak{M} \in \mathbf{Inf}) $$
+  که $\mathbf{Inf}$ مجموعه‌ی تمام ساختارهایی است که عالم سخن نامتناهی دارند. پس $\mathbf{Inf}$ یک رده‌ی $EC$ است. امّا می‌دانیم اگر رده‌ای $EC$ باشد، مکمّل آن هم حتماً $EC$ است، زیرا
+  $$ \forall \mathfrak{M} (\mathfrak{M} \vDash \neg \sigma \iff \mathfrak{M} \in \overline{\mathbf{Inf}}) $$
+  از سویی می‌توان نشان داد که $\overline{\mathbf{Inf}}$، که همان رده‌ی ساختارهای متناهی است، ختّی $EC_\Delta$ هم نیست. فرض کنید $EC_\Delta$ باشد، یعنی مجموعه‌ای از فرمول‌ها مانند $\Gamma$ وجود داشته باشد که
+  $$ \forall \mathfrak{M} (\mathfrak{M} \vDash \Gamma \iff \mathfrak{M} \in \overline{\mathbf{Inf}}) $$
+  جملات $\lambda_n$ رابه صورت زیر تعریف کنید.
+  $$ \lambda_n = \exists x_1 \dots x_n (\bigwedge_{\substack{i,j \leq n \\ i \neq j}} x_i \neq x_j)  $$
+  مجموعه‌ی $\Lambda_\omega$ را به صورت زیر تعریف کنید.
+  $$ \Lambda_\omega = \{ \lambda_n \mid n \in \mathbb{N}, n \geq 2 \} $$
+  بر اساس قضیه‌ی فشردگی، $\Gamma \cup \Lambda_\omega$ باید مدل داشته باشد، چون هر زیر مجموعه‌ی متناهی از آن مانند $\Gamma' \cup \Lambda'$ (که $\Gamma' \subseteq \Gamma$ و $\Lambda' \subseteq \Lambda$ است) مدل دارد: کافی است عالم سخن را مجموعه‌ی $\{ 1, \dots, m \}$ بگیریم، به ازای $m = Max\{k \mid \lambda_k \in \Lambda'\}$.
+
+  امّا $\Lambda_\omega$ نمی‌تواند مدل متناهی‌ای داشته باشد، زیرا برای هر ساختار با عالم سخن $m$ عضوی، $\lambda_{m+1}$ در آن صادق نیست.
 \end{ans}
 
 \end{enumerate}
